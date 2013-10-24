@@ -300,7 +300,7 @@ module.exports = function (grunt) {
         failOnError: true
       },
       pushdeploy: {
-        command: 'sh push_deploy.sh'
+        command: 'sh push_deploy.sh ' + grunt.option('tag')
       }
     }
   });
