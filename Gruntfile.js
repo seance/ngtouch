@@ -292,8 +292,20 @@ module.exports = function (grunt) {
           ]
         }
       }
+    },
+    shell: {
+      options: {
+        stdout: true,
+        stderr: true,
+        failOnError: true
+      },
+      pushdeploy: {
+        command: 'sh push_deploy.sh'
+      }
     }
   });
+  
+  grunt.loadNpmTasks('grunt-shell');
 
   grunt.registerTask('server', function (target) {
     if (target === 'dist') {
@@ -330,6 +342,11 @@ module.exports = function (grunt) {
     'uglify',
     'rev',
     'usemin'
+  ]);
+  
+  grunt.registerTask('deploy', [
+  	'build',
+  	'shell:pushdeploy'
   ]);
 
   grunt.registerTask('default', [
