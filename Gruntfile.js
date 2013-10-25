@@ -350,7 +350,7 @@ module.exports = function (grunt) {
   grunt.registerTask('deploy', [
   	'build',
   	'shell:pushDeploy',
-  	'shell:capDeploy
+  	'shell:capDeploy'
   ]);
 
   grunt.registerTask('default', [
