@@ -299,8 +299,11 @@ module.exports = function (grunt) {
         stderr: true,
         failOnError: true
       },
-      pushdeploy: {
+      pushDeploy: {
         command: 'sh push_deploy.sh ' + grunt.option('tag')
+      },
+      capDeploy: {
+        command: 'cap staging deploy'
       }
     }
   });
@@ -346,7 +349,8 @@ module.exports = function (grunt) {
   
   grunt.registerTask('deploy', [
   	'build',
-  	'shell:pushdeploy'
+  	'shell:pushDeploy',
+  	'shell:capDeploy
   ]);
 
   grunt.registerTask('default', [
