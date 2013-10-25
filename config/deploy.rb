@@ -23,9 +23,7 @@ namespace :deploy do
   desc 'Restart application'
   task :restart do
     on roles(:web), in: :sequence, wait: 5 do
-      # Your restart mechanism here, for example:
-      # execute :touch, release_path.join('tmp/restart.txt')
-      execute :touch, release_path.join('RESTART')
+      run "sudo service nginx reload"
     end
   end
 
